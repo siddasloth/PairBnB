@@ -1,0 +1,53 @@
+
+<head>
+  <title>PairBnb</title>
+ 
+</head>
+<body>
+<header></header>
+
+<nav>
+    <div class="logo"><img src="http://moziru.com/images/drawn-pear-animated-3.jpg"></div>
+    <div><ul class="nav">
+          <li data-toggle="dropdown" id="menu1">Sign In</li>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      			  <li role="menuitem" tabindex="-1"><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
+      			  <li role="menuitem" tabindex="-1">Sign in with Google</li>
+              <li role="menuitem" tabindex="-1"><%= link_to "Sign in with email", sign_in_path %></li>
+      			  <li><% if signed_in? -%>
+      					<div id="signout"><%= button_to "Sign out", sign_out_path, method: :delete %></div>
+    				   <% else -%>
+      					<% link_to root_path %>
+    				   <% end -%>
+
+  				    <div id="flash">
+    			    <% flash.each do |key, value| -%>
+      			  <div id="flash_<%= key %>"><%=h value %></div>
+    			    <% end %>
+  				    </div>
+
+  				   <%= yield %></li>
+      	   </ul>
+      	  <li class="signin"><%=link_to "Sign up", sign_up_path %></li>
+          <li class="signin"><%=link_to "Become a host", new_listing_path %></li>
+
+    </ul>
+    </div>
+</nav>
+
+<div class="search">
+  <div id="form-box">
+    <p><%= form_tag(search_path, method: "get") do %></p>
+    <p id="form"><%= text_field_tag :search, params[:search], placeholder: "Search your destination city" %></p>
+    <p id="form"><%= submit_tag "Go", :name => nil %></p>
+    <p><% end %></p>
+    <p id="form1"><%= link_to "Or see all listings", listings_path %></p>
+  </div>
+</div>
+
+
+
+
+
+
+
