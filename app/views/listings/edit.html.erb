@@ -1,0 +1,32 @@
+<iv>
+<h3>Edit a Listing</h3>
+<%= form_for @listing do |f| %>
+	Title: <%= f.text_field :title %><br />
+	Description: <%= f.text_field :description %> <br />
+	Location: <%= f.text_field :location %> <br />
+	Bedroom: <%= f.number_field :bedroom %> <br />
+	Bathroom: <%= f.number_field :bathroom %><br />
+	Accomodate: <%= f.number_field :accomodate %><br />
+	Entire home: <%= f.check_box :entire_home, {}, true, nil %><br />
+	<br />
+	<%= "Amenities:" %><br />
+	<br />
+	Kitchen: <%= f.check_box :amenities, {:multiple => true}, "kitchen", nil %><br />
+	<br />
+	Washer: <%=f.check_box :amenities, {:multiple => true}, "washer", nil %><br />
+	<br />
+	Pets allowed: <%=f.check_box :amenities, {:multiple => true}, "pets_allowed", nil %><br />
+	<br />
+	Images: <%= f.file_field :images, multiple: true %><br />
+	<br />
+	<%= f.submit "Update Listing" %><br />
+	<br />
+<% end %>
+
+	<%= form_tag(listing_path, method: "delete") do %>
+	<%= submit_tag "Delete listing", :name => nil, data: {confirm: "Are you sure?"} %>
+	<% end %>
+
+</div>
+
+

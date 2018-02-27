@@ -1,0 +1,11 @@
+<h4>All reservations</h4>
+
+<p><% @reservations.each do |r|%></p>
+	<p><%= r.id %></p>
+	<p><%= r.start_date %></p>
+	<p><%= r.end_date %></p>
+	<p>RM 20</p><br />
+	<% end %>
+	<br />
+	<%= link_to "Make Payment", braintree_new_path %>
+

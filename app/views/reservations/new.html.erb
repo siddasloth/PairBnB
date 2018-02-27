@@ -1,0 +1,8 @@
+<h5>Make A Reservation</h5>
+
+<%= form_for [@listing, @reservation] do |r| %>
+	Start Date: <%= r.date_field :start_date %><br />
+	End Date: <%= r.date_field :end_date %> <br />
+	<br />
+	<%= r.submit "Make Reservation" %>
+<% end %>
