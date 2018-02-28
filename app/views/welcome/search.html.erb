@@ -1,0 +1,15 @@
+
+<h4>Your search results:</h4>
+<br />
+<% @listings.each do |listing| %>
+	Listing title: <%= listing.title %><br />
+	Description: <%= listing.description %><br />
+	Location: <%= listing.location %><br />
+	Bedroom: <%= listing.bedroom %><br />
+	Bathroom: <%= listing.bathroom %><br />
+	Accomodates: <%= listing.accomodate %><br />
+	Amenities: <%= listing.amenities %><br />
+	<%= listing.images %><br />
+	<br />
+	<br />
+	<% end %>

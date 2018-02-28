@@ -1,0 +1,44 @@
+<nav>
+    <div class="logo"><img src="http://moziru.com/images/drawn-pear-animated-3.jpg"></div>
+ </nav>
+
+
+
+<div class="title">All Listings</div>
+
+<div><% @listings.each do |listing| %>
+<div class="listing"><%=listing.title %><br />
+		Listing ID: <%=listing.id %><br />
+		Description: <%=listing.description %><br />
+		Location: <%=listing.location %><br />
+		Bedroom: <%=listing.bedroom %><br />
+		Bathroom: <%=listing.bathroom %><br />
+		No. of Guests allowed: <%=listing.accomodate %><br />
+		Entire home: <%=listing.entire_home %><br />
+		Amenities: <%=listing.amenities %><br />
+		<br />
+		<%= link_to "Reserve this place", new_listing_reservation_path(listing) %><br />
+
+		<% if listing.user == current_user %>
+		<%= link_to "Edit this listing", edit_listing_path(listing) %>
+		<% end %>
+		</div>
+					
+	<% end %>		
+</div>
+<br />
+<br />
+
+<div><%= link_to "Show all reservations", listing_reservations_path(:listing_id) %>
+	</div>
+
+
+
+
+
+
+
+
+
+
+

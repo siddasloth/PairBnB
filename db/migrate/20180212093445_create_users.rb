@@ -10,5 +10,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
 
     add_index :users, :email
     add_index :users, :remember_token
+    change_column_null :users, :encrypted_password, true
   end
 end
