@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
 	before_action :require_login
 
 	def index
-		@listing = Listing.all
 		@reservations = Reservation.all
+		@listings = Listing.all
 	end
  
 	def new
@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
 		@reservation = current_user.reservations.new(reservation_params)
 		@reservation.listing_id = @listing.id
 		  if @reservation.save
-		  	ReservationMailer.booking_email(current_user, @listing.id, @reservation).deliver_now
+		  	ReservationJob.perform_later(current_user, @listing.id, @reservation)
 		  	redirect_to [@listing, @reservation]
 		  else
 		  	render "new"
@@ -29,10 +29,18 @@ class ReservationsController < ApplicationController
 		@reservation = Reservation.find(params[:id])
 	end
 
+	def destroy
+		@listing = Listing.find(params[:listing_id])
+		@reservation = Reservation.find(params[:id])
+			if @reservation.destroy
+				redirect_to [@listing, @reservation]
+			end
+		end
+
 	private
 		
 		def reservation_params
-			params.require(:reservation).permit(:start_date, :end_date)
+			params.require(:reservation).permit(:user_id, :Listing_id, :start_date, :end_date, :total_price)
 		end
 
 end

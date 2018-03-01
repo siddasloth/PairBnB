@@ -2,4 +2,7 @@
 
 Listing title: <%=@reservation.listing.title%><br />
 Start date: <%=@reservation.start_date%><br />
-End date:<%=@reservation.end_date%>
+End date:<%=@reservation.end_date%><br />
+<br />
+
+<%= link_to "Make Payment", braintree_new_path %>
