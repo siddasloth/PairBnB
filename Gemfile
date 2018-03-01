@@ -69,3 +69,12 @@ gem 'carrierwave', '~> 1.0'
 gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
 
 gem 'braintree'
+
+gem 'sidekiq'
+
+gem "letter_opener", :group => :development
+
+gem "foreman"
+
+gem "rails_12factor"
+

@@ -5,7 +5,13 @@
 	<p><%= r.start_date %></p>
 	<p><%= r.end_date %></p>
 	<p>RM 20</p><br />
+	<%= button_to "Delete Reservation", listing_reservation_path(r.listing,r), method: :delete %>
+	<%#= form_tag(listing_reservation_path(r.listing,r), method: "delete") do %>
+	<%#= submit_tag "Delete reservation", :name => nil, data: {confirm: "Are you sure?"} %>
+	<%# end %>
+	<br />
 	<% end %>
 	<br />
-	<%= link_to "Make Payment", braintree_new_path %>
+
+	
 
